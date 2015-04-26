@@ -79,7 +79,7 @@
 				<width>2</width>
 			</LineStyle>
 			<PolyStyle>
-				<color>00ffffff</color>
+				<color>ff9C27B0</color>
 			</PolyStyle>
 			<BalloonStyle>
 				<text>$[description]</text>
