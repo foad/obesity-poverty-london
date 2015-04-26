@@ -20,16 +20,32 @@ html, body {
 header {
     height: 64px;
     line-height: 64px;
-    padding-left: 32px;
-    background-color: #FFC107;
+    padding-left: 64px;
+    background-color: #9C27B0;
+}
+header h1 {
     color: #FFFFFF;
-    font-weight: normal;
+    font-size: 1.5em;
+    font-weight: 300;
 }
 
 /**** MAP ****/
 #map {
     width: 100%;
     height: calc(100% - 64px);
+}
+.map__zoomControl {
+    background-color: #EEEEEE;
+    border: 1px solid #E0E0E0;
+    color: #888888;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.81em;
+    font-family: "FontAwesome";
+    user-select: none;
 }
 
 /**** SIDEBAR ****/
