@@ -87,11 +87,11 @@
 		</Style>
 		<Style id='Style0-polygon-3-hover'>
 			<LineStyle>
-				<color>ffcccccc</color>
+				<color>4A1400D2</color>
 				<width>1</width>
 			</LineStyle>
 			<PolyStyle>
-				<color>00ffffff</color>
+				<color>ffffffff</color>
 			</PolyStyle>
 			<BalloonStyle>
 				<text>$[description]</text>
