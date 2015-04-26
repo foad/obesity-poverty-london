@@ -75,11 +75,11 @@
 				<scale>0.0</scale>
 			</LabelStyle>
 			<LineStyle>
-				<color>4A1400D2</color>
+				<color>4A9C27B0</color>
 				<width>2</width>
 			</LineStyle>
 			<PolyStyle>
-				<color>ff9C27B0</color>
+				<color>88CE93D8</color>
 			</PolyStyle>
 			<BalloonStyle>
 				<text>$[description]</text>
