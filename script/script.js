@@ -20,8 +20,9 @@ function initialise() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     var outlineData = readSource("http://danfoad.co.uk/obesity-poverty-london/sources/boroughs.json");
+    console.log(outlineData);
     var outlines = [];
-    for (var borough in outlineData) {
+    /*for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
             paths: outlineData[borough],
             strokeColor: "#CE93D8",
@@ -31,7 +32,7 @@ function initialise() {
             fillOpacity: 0.29,
             map: map
         });
-    }
+    }*/
 
     // Add custom zoom controls to map
     var zoomControlDiv = document.createElement("div");
