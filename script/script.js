@@ -8,7 +8,6 @@ var mapOptions = {
     // Styling to remove POI labels and mute road colours
     styles: [{"stylers":[{"saturation":0}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":200},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":-45}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{elementType: "labels",stylers: [{ visibility: "off" }]}]
 };
-$.ajaxSetup({async: false}); // Prevent asynchronous ajax loading so system waits for response
 
 // Sources
 var obesity_source = "obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
@@ -20,7 +19,7 @@ function initialise() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     var outlineData = readSource("http://danfoad.co.uk/obesity-poverty-london/sources/boroughs.json");
-    console.log(outlineData["Barking and Dagenham"][0].lat());
+    console.log(typeof outlineData);
     var outlines = [];
     /*for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
