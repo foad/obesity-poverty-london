@@ -96,7 +96,7 @@ function readSource(url, pipeDelimited) {
                     data.push(JSON.parse(raw[i]));
                 }
             } else {
-                data = JSON.parse(raw);
+                data = raw;
             }
         }
     };
