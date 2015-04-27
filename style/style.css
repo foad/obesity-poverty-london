@@ -26,6 +26,19 @@ html, body {
     -webkit-transform: translate3d(0, 0, -300px);
     transform: translate3d(0, 0, -300px);
 }
+#overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}
 
 /**** HEADER ****/
 header {
@@ -33,11 +46,35 @@ header {
     line-height: 64px;
     padding-left: 64px;
     background-color: #9C27B0;
+    position: relative;
 }
 header h1 {
     color: #FFFFFF;
     font-size: 1.5em;
     font-weight: 300;
+    display: inline-block;
+}
+#sidebar__button {
+    position: absolute;
+    right: 32px;
+    top: 18px;
+    height: 28px;
+    padding: 0 8px;
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+#sidebar__button:focus, #sidebar__button:hover {
+    outline: none;
+    outline-style: none;
+    border-color: #DDDDDD;
+    color: #DDDDDD;
 }
 
 /**** MAP ****/
@@ -58,7 +95,46 @@ header h1 {
     font-family: "FontAwesome";
     user-select: none;
 }
+#borough {
+    position: absolute;
+    left: 0;
+    top: 64px;
+    display: inline-block;
+    width: 320px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #CE93D8;
+    color: rgba(0,0,0,0.4);
+    padding-left: 8px;
+    z-index: 40;
+}
+#borough p {
+    color: #222222;
+    width: auto;
+    display: inline;
+}
 
 /**** SIDEBAR ****/
+#sidebar {
+    width: 320px;
+    height: 100%;
+    position: absolute;
+    right: -320px;
+    top: 0;
+    z-index: 51;
+    background-color: #AB47BC;
+}
+#sidebar__title {
+    height: 64px;
+    line-height: 64px;
+    padding-left: 16px;
+    color: rgba(0,0,0,0.4);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+#sidebar__title i {
+    padding: 0 8px;
+    font-size: 1.2em;
+}
 
 /**** MEDIA QUERIES ****/

@@ -9,17 +9,28 @@ var mapOptions = {
     styles: [{"stylers":[{"saturation":0}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":200},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":-45}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{elementType: "labels",stylers: [{ visibility: "off" }]}]
 };
 
+// Sources
+var obesity_source = "obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
+var poverty_source = "poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
+
 
 function initialise() {
     // Initialise map object with relevant options
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    var outline = new google.maps.KmlLayer({
-        url: "https://raw.githubusercontent.com/DanFoad/obesity-poverty-london/master/sources/boroughs.kml?v=3",
-        map: map,
-        preserveViewport: true,
-        suppressInfoWindows: true
-    });
+    var outlineData = readSource("boroughs.json");
+    var outlines = [];
+    for (var borough in outlineData) {
+        outlines[borough] = new google.maps.Polygon({
+            paths: outlineData[borough],
+            strokeColor: "#CE93D8",
+            strokeOpacity: 0.53,
+            strokeWeight: 2,
+            fillColor: "#9C27B0",
+            fillOpacity: 0.29,
+            map: map
+        });
+    }
 
     // Add custom zoom controls to map
     var zoomControlDiv = document.createElement("div");
@@ -62,3 +73,49 @@ function ZoomOutControl(controlDiv, map) {
         map.setZoom(map.getZoom() - 1);
     });
 }
+
+/** readSource
+ * Read in data from a JSON source and return the JSON object that was parsed in
+ * @param url   URL of the source file to read in
+ * @param pipeDelimited Whether the source file is delimited via the pipe symbol
+ * @return Object JSON object containing all data read in from file
+ */
+function readSource(url, pipeDelimited) {
+    var file = new XMLHttpRequest();
+    var raw = "";
+    var data;
+    file.open("GET", url, false); // Open file
+    file.onreadystatechange = function() {
+        if (file.readyState === 4 && (file.status === 200 || file.status === 0)) { // If file opened fine
+            raw = file.responseText;
+            if (pipeDelimited) {
+                data = [];
+                raw = raw.split("|"); // Split raw feed into different incidents
+                for (var i in raw) {
+                    data.push(JSON.parse(raw[i]));
+                }
+            } else {
+                data = JSON.parse(raw);
+            }
+        }
+    };
+    file.send(null); // Close file
+    return data;
+}
+
+
+/**** USER INTERACTIONS/LISTENERS ****/
+
+$("#sidebar__button").click(function() {
+    if (!($(".content-wrapper").hasClass("content-wrapper--open"))) {
+        $(".content-wrapper").addClass("content-wrapper--open");
+        $("#overlay").show();
+        $("#sidebar").animate({"right": "0"}, 300);
+    }
+});
+
+$("#overlay").click(function() {
+    $(".content-wrapper--open").removeClass("content-wrapper--open");
+    $(this).hide();
+    $("#sidebar").animate({"right": "-320px"}, 300);
+});

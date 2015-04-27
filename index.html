@@ -18,14 +18,17 @@
     <main class="content-wrapper">
         <header>
             <h1>Obesity and Poverty in London</h1>
-            <button>Menu</button>
+            <button id="sidebar__button">Menu <i class="fa fa-bars"></i></button>
         </header>
+        <div id="borough">Borough: <p>None</p></div>
         <div id="map"></div>
     </main>
     <nav id="sidebar">
-        <h2 id="sidebar__title">Settings</h2>
+        <h2 id="sidebar__title"><i class="fa fa-wrench"></i> Settings</h2>
 
     </nav>
+
+    <div id="overlay"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
