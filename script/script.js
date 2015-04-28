@@ -10,9 +10,9 @@ var mapOptions = {
 };
 
 // Sources
-var obesity_source = "obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
-var poverty_source = "poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
-var outline_source = "boroughs.json";
+var obesity_source = "sources/obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
+var poverty_source = "sources/poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
+var outline_source = "sources/boroughs.json";
 
 
 function initialise() {
