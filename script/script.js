@@ -24,7 +24,7 @@ function initialise() {
     outlineData = parseOutlineData(outlineData);
     var outlines = [];
     new google.maps.Polygon({
-        paths: outlineData["Islington"],
+        paths: [outlineData["Islington"][0], outlineData["Islington"][1], outlineData["Islington"][2]],
         strokeColor: "#CE93D8",
         strokeOpacity: 0.53,
         strokeWeight: 2,
