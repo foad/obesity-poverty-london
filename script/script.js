@@ -23,7 +23,16 @@ function initialise() {
     outlineData = readSource(outline_source);
     outlineData = parseOutlineData(outlineData);
     var outlines = [];
-    for (var borough in outlineData) {
+    new google.maps.Polygon({
+        paths: outlineData["Islington"],
+        strokeColor: "#CE93D8",
+        strokeOpacity: 0.53,
+        strokeWeight: 2,
+        fillColor: "#9C27B0",
+        fillOpacity: 0.29,
+        map: map
+    });
+    /*for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
             paths: outlineData[borough],
             strokeColor: "#CE93D8",
@@ -33,7 +42,7 @@ function initialise() {
             fillOpacity: 0.29,
             map: map
         });
-    }
+    }*/
 
     // Add custom zoom controls to map
     var zoomControlDiv = document.createElement("div");
