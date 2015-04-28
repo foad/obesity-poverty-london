@@ -12,14 +12,15 @@ var mapOptions = {
 // Sources
 var obesity_source = "obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
 var poverty_source = "poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
+var outline_source = "boroughs.json";
 
 
 function initialise() {
     // Initialise map object with relevant options
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    var outlineData = readSource("http://danfoad.co.uk/obesity-poverty-london/sources/boroughs.json");
-    console.log(typeof outlineData);
+    var outlineData = readSource(outline_source);
+    console.log(outlineData);
     var outlines = [];
     /*for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
@@ -96,7 +97,7 @@ function readSource(url, pipeDelimited) {
                     data.push(JSON.parse(raw[i]));
                 }
             } else {
-                data = JSON.parse(JSON.stringify(raw));
+                data = JSON.parse(raw);
             }
         }
     };
