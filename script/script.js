@@ -20,9 +20,9 @@ function initialise() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     var outlineData = readSource(outline_source);
-    console.log(outlineData);
+    outlineData = parseOutlineData(outlineData);
     var outlines = [];
-    /*for (var borough in outlineData) {
+    for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
             paths: outlineData[borough],
             strokeColor: "#CE93D8",
@@ -32,7 +32,7 @@ function initialise() {
             fillOpacity: 0.29,
             map: map
         });
-    }*/
+    }
 
     // Add custom zoom controls to map
     var zoomControlDiv = document.createElement("div");
@@ -103,6 +103,15 @@ function readSource(url, pipeDelimited) {
     };
     file.send(null); // Close file
     return data;
+}
+
+function parseOutlineData(outlineData) {
+    for (var borough in outlineData) {
+        for (var point in outlineData[borough]) {
+            outlineData[borough][point] = new google.maps.LatLng(outlineData[borough][point].lat, outlineData[borough][point].lng);
+        }
+    }
+    return outlineData;
 }
 
 
