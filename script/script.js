@@ -9,7 +9,7 @@ var mapOptions = {
     styles: [{"stylers":[{"saturation":0}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":200},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":-45}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{elementType: "labels",stylers: [{ visibility: "off" }]}]
 };
 var outlineData; // Data from read in outline points
-var outlines = []; // google.maps.Polygon objects outlining boroughs
+var outlines; // google.maps.Polygon objects outlining boroughs
 
 // Sources
 var obesity_source = "sources/obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
@@ -23,6 +23,7 @@ function initialise() {
 
     outlineData = readSource(outline_source);
     outlineData = parseOutlineData(outlineData);
+    outlines = new Array();
     for (var borough in outlineData) {
         outlines[borough] = new google.maps.Polygon({
             paths: outlineData[borough],
