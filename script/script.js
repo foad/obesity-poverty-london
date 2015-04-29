@@ -41,6 +41,7 @@ function initialise() {
         for (var borough in outlines) {
             outlines[borough].setMap(map);
         }
+        clicked = false;
     });
 }
 google.maps.event.addDomListener(window, "load", initialise);
@@ -155,6 +156,7 @@ function bindOutlineEvents(polygon) {
             }
             polygon.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
         }
+        clicked = true;
     });
 }
 
