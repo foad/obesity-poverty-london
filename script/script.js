@@ -3,7 +3,7 @@ var map; // Main map variable
 var mapOptions = {
     center: new google.maps.LatLng(51.5072, -0.1275),
     zoom: 10,
-    minZoom: 8,
+    minZoom: 9,
     disableDefaultUI: true,
     // Styling to remove POI labels and mute road colours
     styles: [{"stylers":[{"saturation":0}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":200},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":-45}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"simplified"},{"saturation":45}]},{elementType: "labels",stylers: [{ visibility: "off" }]}]
@@ -58,7 +58,7 @@ function ZoomOutControl(controlDiv, map) {
     controlDiv.style.padding = "5px"; // Apply padding around element
     var controlUI = document.createElement("div");
     $(controlUI).addClass("map__zoomControl");
-    if (map.getZoom() <= 8) controlUI.style.visibility = "hidden"; // Hide control if zoomed out fully
+    if (map.getZoom() <= 9) controlUI.style.visibility = "hidden"; // Hide control if zoomed out fully
     controlUI.innerHTML = "&#xf068;"; // - Symbol in FontAwesome
     controlDiv.appendChild(controlUI);
     google.maps.event.addDomListener(controlUI, "click", function() { // Zoom out
@@ -126,16 +126,35 @@ function parseOutlineData(outlineData) {
  * @param {Object} polygon   Polygon to apply events to
  */
 function bindOutlineEvents(polygon) {
-    google.maps.event.addListener(polygon,"mouseover",function(){
+    google.maps.event.addListener(polygon,"mouseover", function() {
         this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
         $("#borough p").html(polygon.name);
     }); 
 
-    google.maps.event.addListener(polygon,"mouseout",function(){
+    google.maps.event.addListener(polygon,"mouseout", function() {
         this.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
+    });
+
+    google.maps.event.addListener(polygon, "click", function() {
+        map.fitBounds(polygon.getBounds());
     });
 }
 
+/*
+ *  Add getBounds() function to google.maps.Polygon objects
+ */
+google.maps.Polygon.prototype.getBounds = function() {
+    var bounds = new google.maps.LatLngBounds();
+    var paths = this.getPaths();
+    var path;        
+    for (var i = 0; i < paths.getLength(); i++) {
+        path = paths.getAt(i);
+        for (var ii = 0; ii < path.getLength(); ii++) {
+            bounds.extend(path.getAt(ii));
+        }
+    }
+    return bounds;
+}
 
 /**** USER INTERACTIONS/LISTENERS ****/
 
