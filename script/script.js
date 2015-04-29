@@ -21,7 +21,6 @@ function initialise() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     outlineData = readSource(outline_source);
-    console.log("nw er");
     outlineData = parseOutlineData(outlineData);
     var outlines = [];
     for (var borough in outlineData) {
@@ -99,7 +98,7 @@ function readSource(url, pipeDelimited) {
                     data.push(JSON.parse(raw[i]));
                 }
             } else {
-                console.log("here");
+                console.log(raw);
                 data = JSON.parse(raw);
             }
         }
