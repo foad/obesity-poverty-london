@@ -22,22 +22,7 @@ function initialise() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     outlineData = readSource(outline_source);
-    outlineData = parseOutlineData(outlineData);
-    outlines = new Array();
-    for (var borough in outlineData) {
-        outlines[borough] = new google.maps.Polygon({
-            paths: outlineData[borough],
-            strokeColor: "#CE93D8",
-            strokeOpacity: 0.53,
-            strokeWeight: 2,
-            fillColor: "#9C27B0",
-            fillOpacity: 0.29,
-            map: map
-        });
-        google.maps.event.addListener(outlines[borough], 'mouseover', function() {
-            $("#borough p").html(Object.keys(outlineData)[borough]);
-        });
-    }
+    parseOutlineData(outlineData);
 
     // Add custom zoom controls to map
     var zoomControlDiv = document.createElement("div");
@@ -117,7 +102,31 @@ function parseOutlineData(outlineData) {
             outlineData[borough][point] = new google.maps.LatLng(outlineData[borough][point].lat, outlineData[borough][point].lng);
         }
     }
-    return outlineData;
+    outlines = new Array();
+    for (var borough in outlineData) {
+        outlines[borough] = new google.maps.Polygon({
+            paths: outlineData[borough],
+            strokeColor: "#CE93D8",
+            strokeOpacity: 0.53,
+            strokeWeight: 2,
+            fillColor: "#9C27B0",
+            fillOpacity: 0.29,
+            map: map
+        });
+        outlines[borough].name = Object.keys(outlineData)[borough];
+        bindHover(outlines[borough]);
+    }
+}
+
+function bindHover(polygon) {
+    google.maps.event.addListener(polygon,"mouseover",function(){
+        this.setOptions({fillColor: "#7B1FA2"});
+        $("#borough p").html(polygon.name);
+    }); 
+
+    google.maps.event.addListener(polygon,"mouseout",function(){
+        this.setOptions({fillColor: "#9C27B0"});
+    });
 }
 
 
