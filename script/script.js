@@ -68,9 +68,9 @@ function ZoomOutControl(controlDiv, map) {
 
 /** readSource
  * Read in data from a JSON source and return the JSON object that was parsed in
- * @param url   URL of the source file to read in
- * @param pipeDelimited Whether the source file is delimited via the pipe symbol
- * @return Object JSON object containing all data read in from file
+ * @param {String} url   URL of the source file to read in
+ * @param {Boolean} pipeDelimited Whether the source file is delimited via the pipe symbol
+ * @return {Object} JSON object containing all data read in from file
  */
 function readSource(url, pipeDelimited) {
     var file = new XMLHttpRequest();
@@ -95,6 +95,10 @@ function readSource(url, pipeDelimited) {
     return data;
 }
 
+/** parseOutlineData
+ * Convert inputted outline data into google.maps.Polygons and apply to map
+ * @param {Object} outlineData   Inputted outline data that was read in
+ */
 function parseOutlineData(outlineData) {
     for (var borough in outlineData) {
         for (var point in outlineData[borough]) {
@@ -113,11 +117,15 @@ function parseOutlineData(outlineData) {
             map: map
         });
         outlines[borough].name = borough;
-        bindHover(outlines[borough]);
+        bindOutlineEvents(outlines[borough]);
     }
 }
 
-function bindHover(polygon) {
+/** bindOutlineEvents
+ * Binds hover and click events to polygon outlines for interactions
+ * @param {Object} polygon   Polygon to apply events to
+ */
+function bindOutlineEvents(polygon) {
     google.maps.event.addListener(polygon,"mouseover",function(){
         this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
         $("#borough p").html(polygon.name);
