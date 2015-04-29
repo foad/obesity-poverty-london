@@ -137,6 +137,12 @@ function bindOutlineEvents(polygon) {
 
     google.maps.event.addListener(polygon, "click", function() {
         map.fitBounds(polygon.getBounds());
+        for (var borough in outlines) {
+            if (!(outlines[borough] == polygon)) {
+                outlines[borough].setMap(null);
+            }
+            polygon.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
+        }
     });
 }
 
