@@ -112,7 +112,7 @@ function parseOutlineData(outlineData) {
             fillOpacity: 0.29,
             map: map
         });
-        console.log(borough);
+        outlines[borough].name = borough;
         bindHover(outlines[borough]);
     }
 }
