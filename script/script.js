@@ -10,6 +10,7 @@ var mapOptions = {
 };
 var outlineData; // Data from read in outline points
 var outlines; // google.maps.Polygon objects outlining boroughs
+var selected = false; // Whether a borough is selected
 
 // Sources
 var obesity_source = "sources/obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
@@ -138,7 +139,7 @@ function parseOutlineData(outlineData) {
  */
 function bindOutlineEvents(polygon) {
     google.maps.event.addListener(polygon,"mouseover", function() {
-        this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
+        if (!selected) this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
         $("#borough p").html(polygon.name);
     }); 
 
