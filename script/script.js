@@ -87,7 +87,6 @@ function readSource(url, pipeDelimited) {
                     data.push(JSON.parse(raw[i]));
                 }
             } else {
-                console.log(raw);
                 data = JSON.parse(raw);
             }
         }
@@ -113,19 +112,19 @@ function parseOutlineData(outlineData) {
             fillOpacity: 0.29,
             map: map
         });
-        outlines[borough].name = Object.keys(outlineData)[borough];
+        console.log(Object.keys(outlineData)[borough]);
         bindHover(outlines[borough]);
     }
 }
 
 function bindHover(polygon) {
     google.maps.event.addListener(polygon,"mouseover",function(){
-        this.setOptions({fillColor: "#7B1FA2"});
+        this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.8});
         $("#borough p").html(polygon.name);
     }); 
 
     google.maps.event.addListener(polygon,"mouseout",function(){
-        this.setOptions({fillColor: "#9C27B0"});
+        this.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
     });
 }
 
