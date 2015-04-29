@@ -112,14 +112,14 @@ function parseOutlineData(outlineData) {
             fillOpacity: 0.29,
             map: map
         });
-        console.log(Object.keys(outlineData)[borough]);
+        console.log(borough);
         bindHover(outlines[borough]);
     }
 }
 
 function bindHover(polygon) {
     google.maps.event.addListener(polygon,"mouseover",function(){
-        this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.8});
+        this.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
         $("#borough p").html(polygon.name);
     }); 
 
