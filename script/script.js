@@ -30,6 +30,17 @@ function initialise() {
     var zoomInControl = new ZoomInControl(zoomControlDiv, map);
     var zoomOutControl = new ZoomOutControl(zoomControlDiv, map);
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(zoomControlDiv); // Apply zoom controls
+
+    // Map listeners
+    google.maps.event.addListener(map, "click", function() {
+        map.setOptions({
+            zoom: 10,
+            center: new google.maps.LatLng(51.5072, -0.1275)
+        });
+        for (var borough in outlines) {
+            outlines[borough].setMap(map);
+        }
+    });
 }
 google.maps.event.addDomListener(window, "load", initialise);
 
@@ -141,7 +152,7 @@ function bindOutlineEvents(polygon) {
             if (!(outlines[borough] == polygon)) {
                 outlines[borough].setMap(null);
             }
-            polygon.setOptions({fillColor: "#7B1FA2", fillOpacity: 0.53});
+            polygon.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
         }
     });
 }
