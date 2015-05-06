@@ -48,10 +48,10 @@ function initialise() {
     });
 
     // Initialise source information
-    obesityMax = Math.max.apply(Math, obesity.map(function(o){return o.obesity;})));
-    obesityMin = Math.min.apply(Math, obesity.map(function(o){return o.obesity;})));
-    povertyMax = Math.max.apply(Math, poverty.map(function(p){return p.poverty;})));
-    povertyMin = Math.min.apply(Math, poverty.map(function(p){return p.poverty;})));
+    obesityMax = Math.max.apply(Math, obesity.map(function(o){return o.obesity;}));
+    obesityMin = Math.min.apply(Math, obesity.map(function(o){return o.obesity;}));
+    povertyMax = Math.max.apply(Math, poverty.map(function(p){return p.poverty;}));
+    povertyMin = Math.min.apply(Math, poverty.map(function(p){return p.poverty;}));
 }
 google.maps.event.addDomListener(window, "load", initialise);
 
