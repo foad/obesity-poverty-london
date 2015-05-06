@@ -15,8 +15,11 @@ var selected = false; // Whether a borough is selected
 // Sources
 var obesity_source = "sources/obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
 var poverty_source = "sources/poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
-var outline_source = "sources/boroughs.json";
+var outline_source = "sources/boroughs.json"; // Outline data for London boroughs, manually converted from KML
 
+var obesity = readSource(obesity_source, true); // Read in obesity percentages
+var poverty = readSource(poverty_source, true); // Read in poverty percentages
+var obesityMax, obesityMin, povertyMax, povertyMin;
 
 function initialise() {
     // Initialise map object with relevant options
@@ -43,6 +46,12 @@ function initialise() {
         }
         selected = false;
     });
+
+    // Initialise source information
+    obesityMax = Math.max.apply(Math, obesity);
+    obesityMin = Math.min.apply(Math, obesity);
+    povertyMax = Math.max.apply(Math, poverty);
+    povertyMin = Math.min.apply(Math, poverty);
 }
 google.maps.event.addDomListener(window, "load", initialise);
 
@@ -108,6 +117,14 @@ function readSource(url, pipeDelimited) {
     return data;
 }
 
+/** displayData
+ * Display visual representation of data for selected borough
+ * @param borough   Name of currently selected borough
+ */
+function displayData(borough) {
+
+}
+
 /** parseOutlineData
  * Convert inputted outline data into google.maps.Polygons and apply to map
  * @param {Object} outlineData   Inputted outline data that was read in
@@ -157,6 +174,7 @@ function bindOutlineEvents(polygon) {
             polygon.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
         }
         selected = true;
+        displayData(polygon.name);
     });
 }
 
