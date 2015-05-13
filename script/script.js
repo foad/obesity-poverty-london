@@ -122,7 +122,13 @@ function readSource(url, pipeDelimited) {
  * @param borough   Name of currently selected borough
  */
 function displayData(borough) {
-
+    var obesityCircle = new google.maps.Circle({
+        fillColor: "#0000FF",
+        fillOpacity: 0.6,
+        map: map,
+        center: map.getCenter(),
+        radius: 100
+    });
 }
 
 /** parseOutlineData
