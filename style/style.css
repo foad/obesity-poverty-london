@@ -124,6 +124,7 @@ header h1 {
     z-index: 51;
     background-color: #AB47BC;
     color: rgba(0,0,0,0.6);
+    overflow-y: auto;
 }
 #sidebar__title {
     height: 64px;
@@ -221,13 +222,15 @@ input[type="checkbox"]:checked + label:after {
     width: 300px;
     margin-left: 10px;
     display: inline-block;
+    list-style: none;
 }
 #search-results li {
     width: 100%;
     cursor: pointer;
-    height: 24px;
+    height: 28px;
+    padding-left: 16px;
     background-color: #AB47BC;
-    line-height: 24px;
-    border: 1px solid rgba(0,0,0,0.4);
+    line-height: 28px;
+    border: 1px solid rgba(0,0,0,0.2);
     border-top: 0;
 }
