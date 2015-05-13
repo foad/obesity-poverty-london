@@ -12,6 +12,10 @@ var outlineData; // Data from read in outline points
 var outlines; // google.maps.Polygon objects outlining boroughs
 var selected = false; // Whether a borough is selected
 
+// Whether each dataset is displayed
+var obesityDisplayed = true;
+var povertyDisplayed = true;
+
 // Sources
 var obesity_source = "sources/obesity.txt"; // Data from http://data.london.gov.uk/dataset/obesity-adults
 var poverty_source = "sources/poverty.txt"; // Data from http://data.london.gov.uk/dataset/percentage-people-low-income-borough
@@ -147,7 +151,7 @@ function displayData(borough) {
             fillOpacity: 0.35,
             scale: 0
         },
-        map: map
+        map: obesityDisplayed ? map : null
     });
 
     povertyCircle = new google.maps.Marker({
@@ -159,7 +163,7 @@ function displayData(borough) {
             fillOpacity: 0.35,
             scale: 0
         },
-        map: map
+        map: povertyDisplayed ? map : null
     });
 
     animateCircles(obesityScale, povertyScale);
@@ -295,4 +299,9 @@ $("#search-results li").click(function() {
         google.maps.event.trigger(map, 'click');
     }
     google.maps.event.trigger(outlines[borough], 'click');
+});
+
+$(".setting__switch").change(function() {
+    obesityDisplayed = $("#type__obesity").prop("checked");
+    povertyDisplayed = $("#type__poverty").prop("checked");
 });

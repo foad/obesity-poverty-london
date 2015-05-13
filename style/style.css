@@ -235,6 +235,6 @@ input[type="checkbox"]:checked + label:after {
     border-top: 0;
     display: none;
 }
-#search-results:hover {
+#search-results li:hover {
     background-color: #9C27B0;
 }
