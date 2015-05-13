@@ -129,9 +129,11 @@ function displayData(borough) {
     var ob = obesity.filter(function(o) { o.borough == borough });
     var po = poverty.filter(function(p) { p.borough == borough });
     var maxHeight = $("#map").height() / 2;
+    console.log(ob + "::" + po);
 
     var obesityScale = ((ob - obesityMin) / (obesityMax - obesityMin)) * maxHeight;
     var povertyScale = ((po - povertyMin) / (povertyMax - povertyMin)) * maxHeight;
+    console.log(obesityScale + "::" + povertyScale);
 
     obesityCircle = new google.maps.Marker({
         position: map.getCenter(),
