@@ -144,6 +144,9 @@ header h1 {
     font-size: 0.9em;
     text-transform: uppercase;
 }
+#sidebar p {
+    padding: 0 8px;
+}
 #sidebar input[type="text"] {
     width: 300px;
     padding-left: 16px;
