@@ -27,12 +27,14 @@
         <h2 id="sidebar__title"><i class="fa fa-wrench"></i> Settings</h2>
         
         <h3>Choose Borough</h3>
-        <input type="text" name="borough" placeholder="Search for specific borough..." />
+        <input type="text" name="borough" />
 
         <h3>Display Options</h3>
         <div class="settings__switch">Obesity (Blue)<input id="type__obesity" type="checkbox" autocomplete="off" checked /><label for="type__obesity"></label></div>
         <div class="settings__switch">Poverty (Red)<input id="type__poverty" type="checkbox" autocomplete="off" checked /><label for="type__poverty"></label></div>
-
+        
+        <h3>Explanation</h3>
+        It seems counter-intuitive, but areas of poverty often correlate closely to areas of obesity. By using population data from two separate data sources, borough data converted manually and some circles, this app shows just how close this correlation can be. Of course, there are outliers in the data, such as Bromley (which has extremely different values for obesity and poverty) or Enfield (which has extremely close values) the majority of the boroughs show that this correlation may hold some truth to it. To compare the data, each borough's percentage rates are normalised against the other data for London, this allows for the fair comparison of ratios rather than strict values.
     </nav>
 
     <div id="overlay"></div>

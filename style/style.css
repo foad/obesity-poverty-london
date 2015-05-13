@@ -146,6 +146,7 @@ header h1 {
 }
 #sidebar input[type="text"] {
     width: 300px;
+    padding-left: 16px;
     display: inline-block;
     height: 32px;
     color: rgba(0,0,0,0.6);
