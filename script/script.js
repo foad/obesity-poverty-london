@@ -237,15 +237,17 @@ function bindOutlineEvents(polygon) {
     });
 
     google.maps.event.addListener(polygon, "click", function() {
-        map.fitBounds(polygon.getBounds());
-        for (var borough in outlines) {
-            if (!(outlines[borough] == polygon)) {
-                outlines[borough].setMap(null);
+        if (!selected) {
+            map.fitBounds(polygon.getBounds());
+            for (var borough in outlines) {
+                if (!(outlines[borough] == polygon)) {
+                    outlines[borough].setMap(null);
+                }
+                polygon.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
             }
-            polygon.setOptions({fillColor: "#9C27B0", fillOpacity: 0.29});
+            selected = true;
+            displayData(polygon.name);
         }
-        selected = true;
-        displayData(polygon.name);
     });
 }
 
