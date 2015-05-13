@@ -233,4 +233,5 @@ input[type="checkbox"]:checked + label:after {
     line-height: 28px;
     border: 1px solid rgba(0,0,0,0.2);
     border-top: 0;
+    display: none;
 }
