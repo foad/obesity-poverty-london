@@ -180,7 +180,7 @@ function displayData(borough) {
         circle.scale = (obesityScale / 50) * count
     }, 20);
 
-    var [poAnimation = window.setInterval(function() {
+    var poAnimation = window.setInterval(function() {
         if (count == 50) {
             clearInterval(poAnimation);
             return;
