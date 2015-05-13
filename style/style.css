@@ -122,7 +122,10 @@ header h1 {
     line-height: 32px;
     padding-left: 16px;
     z-index: 40;
-    color: #222222;
+    color: #444444;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
 /**** SIDEBAR ****/
