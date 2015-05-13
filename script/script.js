@@ -145,7 +145,7 @@ function displayData(borough) {
             strokeWeight: 0,
             fillColor: "#0000FF",
             fillOpacity: 0.35,
-            scale: 0
+            scale: obesityScale
         },
         map: map
     });
@@ -162,7 +162,7 @@ function displayData(borough) {
         map: map
     });
 
-    animateCircles(obesityScale, povertyScale);
+    //animateCircles(obesityScale, povertyScale);
 }
 
 /** animateCircles
@@ -187,7 +187,7 @@ function displayData(borough) {
             clearInterval(poAnimation);
             return;
         }
-        var circle = povertyCircle.icon;
+        var circle = povertyCircle.get('icon');
         circle.scale = (povertyScale / 50) * count;
         povertyCircle.set('icons', circle);
     }, 20);
