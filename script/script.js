@@ -279,7 +279,9 @@ $("#overlay").click(function() {
 
 $("#sidebar__search").change(function() {
     var search = $("#sidebar__search").val();
+    console.log(search);
     $("#search-results li").each(function(i, entry) {
+        console.log($(entry).data("borough").search(search));
         if ($(entry).data("borough").search(search) > -1) {
             $(entry).show();
         } else {
