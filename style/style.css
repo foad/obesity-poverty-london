@@ -217,5 +217,17 @@ input[type="checkbox"]:checked + label:after {
   margin-left: 24px;
   background-color: #CE93D8;
 }
-
-/**** MEDIA QUERIES ****/
+#search-results {
+    width: 300px;
+    margin-left: 10px;
+    display: inline-block;
+}
+#search-results li {
+    width: 100%;
+    cursor: pointer;
+    height: 24px;
+    background-color: #AB47BC;
+    line-height: 24px;
+    border: 1px solid rgba(0,0,0,0.4);
+    border-top: 0;
+}
