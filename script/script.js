@@ -287,3 +287,12 @@ $("#sidebar__search").keyup(function() {
         }
     });
 });
+
+$("#search-results li").click() {
+    var borough = $(this).data("borough");
+    $("#overlay").trigger("click");
+    if (selected) {
+        google.maps.event.trigger(map, 'click');
+    }
+    google.maps.event.trigger(outlines[borough], 'click');
+}

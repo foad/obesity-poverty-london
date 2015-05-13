@@ -229,9 +229,12 @@ input[type="checkbox"]:checked + label:after {
     cursor: pointer;
     height: 28px;
     padding-left: 16px;
-    background-color: #AB47BC;
+    background-color: #BA68C8;
     line-height: 28px;
     border: 1px solid rgba(0,0,0,0.2);
     border-top: 0;
     display: none;
+}
+#search-results:hover {
+    background-color: #9C27B0;
 }
