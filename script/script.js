@@ -129,6 +129,7 @@ function displayData(borough) {
     var obesityCircle = new google.maps.Marker({
         position: map.getCenter(),
         icon: {
+            path: google.maps.SymbolPath.CIRCLE,
             strokeWeight: 0,
             fillColor: "#0000FF",
             fillOpacity: 0.35,
