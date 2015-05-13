@@ -288,11 +288,11 @@ $("#sidebar__search").keyup(function() {
     });
 });
 
-$("#search-results li").click() {
+$("#search-results li").click(function() {
     var borough = $(this).data("borough");
     $("#overlay").trigger("click");
     if (selected) {
         google.maps.event.trigger(map, 'click');
     }
     google.maps.event.trigger(outlines[borough], 'click');
-}
+});
