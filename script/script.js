@@ -126,6 +126,7 @@ function readSource(url, pipeDelimited) {
  */
 function displayData(borough) {
 
+    console.log(borough);
     var ob = obesity.filter(function(o) { o.borough == borough });
     var po = poverty.filter(function(p) { p.borough == borough });
     var maxHeight = $("#map").height() / 2;
