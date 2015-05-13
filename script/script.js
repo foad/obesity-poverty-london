@@ -171,7 +171,7 @@ function displayData(borough) {
  function animateCircles(obesityScale, povertyScale) {
     var count = 0;
     var obAnimation = window.setInterval(function() {
-        if (count == 50) {
+        if (count == 40) {
             clearInterval(obAnimation);
             return;
         }
@@ -183,7 +183,7 @@ function displayData(borough) {
     }, 20);
 
     var poAnimation = window.setInterval(function() {
-        if (count == 50) {
+        if (count == 40) {
             clearInterval(poAnimation);
             return;
         }
