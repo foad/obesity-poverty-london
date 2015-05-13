@@ -126,14 +126,17 @@ function readSource(url, pipeDelimited) {
  */
 function displayData(borough) {
 
-    var ob = obesity.filter(function(o) { return o.borough == borough });
-    var po = poverty.filter(function(p) { return p.borough == borough });
+    var ob, po
+    for (var i = 0; i < obesity.length; i++) {
+        if (obesity[i].borough == borough) ob = obesity[i].obesity
+    }
+    for (var i = 0; i < poverty.length; i++) {
+        if (poverty[i].borough == borough) po = poverty[i].poverty
+    }
     var maxHeight = $("#map").height() / 2;
-    console.log(ob.obesity + "::" + po.poverty);
 
-    var obesityScale = ((ob.obesity - obesityMin) / (obesityMax - obesityMin)) * maxHeight;
-    var povertyScale = ((po.poverty - povertyMin) / (povertyMax - povertyMin)) * maxHeight;
-    console.log(obesityScale + "::" + povertyScale);
+    var obesityScale = ((ob - obesityMin) / (obesityMax - obesityMin)) * maxHeight;
+    var povertyScale = ((po - povertyMin) / (povertyMax - povertyMin)) * maxHeight;
 
     obesityCircle = new google.maps.Marker({
         position: map.getCenter(),
