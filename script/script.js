@@ -277,12 +277,10 @@ $("#overlay").click(function() {
     $("#sidebar").animate({"right": "-320px"}, 300);
 });
 
-$("#sidebar__search").change(function() {
-    var search = $("#sidebar__search").val();
-    console.log(search);
+$("#sidebar__search").keyup(function() {
+    var search = $("#sidebar__search").val().toLowerCase();
     $("#search-results li").each(function(i, entry) {
-        console.log($(entry).data("borough").search(search));
-        if ($(entry).data("borough").search(search) > -1) {
+        if ($(entry).data("borough").toLowerCase().search(search) > -1) {
             $(entry).show();
         } else {
             $(entry).hide();
