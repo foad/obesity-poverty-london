@@ -20,6 +20,7 @@ var outline_source = "sources/boroughs.json"; // Outline data for London borough
 var obesity = readSource(obesity_source, true); // Read in obesity percentages
 var poverty = readSource(poverty_source, true); // Read in poverty percentages
 var obesityMax, obesityMin, povertyMax, povertyMin;
+var obesityCircle, povertyCircle;
 
 function initialise() {
     // Initialise map object with relevant options
@@ -44,6 +45,8 @@ function initialise() {
         for (var borough in outlines) {
             outlines[borough].setMap(map);
         }
+        obesityCircle.setMap(null);
+        povertyCircle.setMap(null);
         selected = false;
     });
 
@@ -130,7 +133,7 @@ function displayData(borough) {
     var obesityScale = ((ob - obesityMin) / (obesityMax - obesityMin)) * maxHeight;
     var povertyScale = ((po - povertyMin) / (povertyMax - povertyMin)) * maxHeight;
 
-    var obesityCircle = new google.maps.Marker({
+    obesityCircle = new google.maps.Marker({
         position: map.getCenter(),
         icon: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -142,7 +145,7 @@ function displayData(borough) {
         map: map
     });
 
-    var povertyCircle = new google.maps.Marker({
+    povertyCircle = new google.maps.Marker({
         position: map.getCenter(),
         icon: {
             path: google.maps.SymbolPath.CIRCLE,
