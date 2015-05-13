@@ -280,7 +280,7 @@ $("#overlay").click(function() {
 $("#sidebar__search").keyup(function() {
     var search = $("#sidebar__search").val().toLowerCase();
     $("#search-results li").each(function(i, entry) {
-        if ($(entry).data("borough").toLowerCase().search(search) > -1) {
+        if ($(entry).data("borough").toLowerCase().search(search) > -1 && search.length > 0) {
             $(entry).show();
         } else {
             $(entry).hide();
