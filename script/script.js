@@ -179,6 +179,7 @@ function displayData(borough) {
         var circle = obesityCircle.icon;
         circle.scale = (obesityScale / 50) * count;
         obesityCircle.set('icons', circle);
+        console.log(circle.scale);
     }, 20);
 
     var poAnimation = window.setInterval(function() {
