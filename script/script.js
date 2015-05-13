@@ -177,7 +177,8 @@ function displayData(borough) {
         }
         count++;
         var circle = obesityCircle.icon;
-        circle.scale = (obesityScale / 50) * count
+        circle.scale = (obesityScale / 50) * count;
+        obesityCircle.set('icons', circle);
     }, 20);
 
     var poAnimation = window.setInterval(function() {
@@ -186,7 +187,8 @@ function displayData(borough) {
             return;
         }
         var circle = povertyCircle.icon;
-        circle.scale = (povertyScale / 50) * count
+        circle.scale = (povertyScale / 50) * count;
+        povertyCircle.set('icons', circle);
     }, 20);
  }
 
