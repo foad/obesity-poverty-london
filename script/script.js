@@ -126,13 +126,15 @@ function displayData(borough) {
     var ob = obesity.filter(function(o) { o.borough == borough });
     var po = poverty.filter(function(p) { p.borough == borough });
 
-    var obesityCircle = new google.maps.Circle({
-        strokeWeight: 0,
-        fillColor: "#0000FF",
-        fillOpacity: 0.35,
-        map: map,
-        center: map.getCenter(),
-        radius: MAX_VALUE / Math.pow(2, map.getZoom())
+    var obesityCircle = new google.maps.Marker({
+        position: map.getCenter(),
+        icon: {
+            strokeWeight: 0,
+            fillColor: "#0000FF",
+            fillOpacity: 0.35,
+            scale: 400
+        },
+        map: map
     });
 }
 
