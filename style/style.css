@@ -159,7 +159,7 @@ input[type="checkbox"] + label {
     padding: 2px;
     width: 56px;
     height: 32px;
-    background-color: #444444;
+    background-color: #4A148C;
     border-radius: 30px;
     transition: background 0.4s;
 }
@@ -182,7 +182,7 @@ input[type="checkbox"] + label:after {
     left: 4px;
     bottom: 4px;
     width: 24px;
-    background-color: #444444;
+    background-color: #4A148C;
     border-radius: 30px;
     transition: margin 0.4s, background 0.4s;
 }
