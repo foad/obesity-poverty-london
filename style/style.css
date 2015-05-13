@@ -173,7 +173,7 @@ input[type="checkbox"] + label:before {
     left: 2px;
     bottom: 2px;
     right: 2px;
-    background-color: #FFFFFF;
+    background-color: #AB47BC;
     border-radius: 32px;
     transition: background 0.4s;
 }
@@ -187,11 +187,11 @@ input[type="checkbox"] + label:after {
     transition: margin 0.4s, background 0.4s;
 }
 input[type="checkbox"]:checked + label {
-  background-color: #80CBC4;
+  background-color: #7B1FA2;
 }
 input[type="checkbox"]:checked + label:after {
   margin-left: 24px;
-  background-color: #80CBC4;
+  background-color: #7B1FA2;
 }
 
 /**** MEDIA QUERIES ****/
