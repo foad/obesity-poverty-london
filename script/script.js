@@ -123,11 +123,12 @@ function readSource(url, pipeDelimited) {
  */
 function displayData(borough) {
     var obesityCircle = new google.maps.Circle({
+        strokeWeight: 0,
         fillColor: "#0000FF",
         fillOpacity: 0.6,
         map: map,
         center: map.getCenter(),
-        radius: 100
+        radius: 1000
     });
 }
 
