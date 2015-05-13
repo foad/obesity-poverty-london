@@ -136,5 +136,62 @@ header h1 {
     padding: 0 8px;
     font-size: 1.2em;
 }
+.settings__switch {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    padding-left: 16px;
+    font-size: 0.85em;
+}
+input[type="checkbox"] {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+input[type="checkbox"] + label {
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 16px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    padding: 2px;
+    width: 56px;
+    height: 32px;
+    background-color: #DDDDDD;
+    border-radius: 30px;
+    transition: background 0.4s;
+}
+input[type="checkbox"] + label:before, input[type="checkbox"] + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+input[type="checkbox"] + label:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: #FFFFFF;
+    border-radius: 32px;
+    transition: background 0.4s;
+}
+input[type="checkbox"] + label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 24px;
+    background-color: #DDDDDD;
+    border-radius: 30px;
+    transition: margin 0.4s, background 0.4s;
+}
+input[type="checkbox"]:checked + label {
+  background-color: #80CBC4;
+}
+input[type="checkbox"]:checked + label:after {
+  margin-left: 24px;
+  background-color: #80CBC4;
+}
 
 /**** MEDIA QUERIES ****/
