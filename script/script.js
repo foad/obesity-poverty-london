@@ -125,6 +125,10 @@ function displayData(borough) {
 
     var ob = obesity.filter(function(o) { o.borough == borough });
     var po = poverty.filter(function(p) { p.borough == borough });
+    var maxHeight = $("#map").height() / 2;
+
+    var obesityScale = ((ob - obesityMin) / (obesityMax - obesityMin)) * maxHeight;
+    var povertyScale = ((po - povertyMin) / (povertyMax - povertyMin)) * maxHeight;
 
     var obesityCircle = new google.maps.Marker({
         position: map.getCenter(),
@@ -133,7 +137,19 @@ function displayData(borough) {
             strokeWeight: 0,
             fillColor: "#0000FF",
             fillOpacity: 0.35,
-            scale: 400
+            scale: obesityScale
+        },
+        map: map
+    });
+
+    var povertyCircle = new google.maps.Marker({
+        position: map.getCenter(),
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            strokeWeight: 0,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            scale: povertyScale
         },
         map: map
     });
