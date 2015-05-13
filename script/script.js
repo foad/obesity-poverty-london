@@ -301,7 +301,7 @@ $("#search-results li").click(function() {
     google.maps.event.trigger(outlines[borough], 'click');
 });
 
-$(".setting__switch").change(function() {
+$(".settings__switch").change(function() {
     obesityDisplayed = $("#type__obesity").prop("checked");
     povertyDisplayed = $("#type__poverty").prop("checked");
 });
