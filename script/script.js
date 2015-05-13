@@ -168,7 +168,7 @@ function displayData(borough) {
 /** animateCircles
  * Animate the visual representations of obesity/poverty
  */
- function animateCircles(oScale, pScale) {
+ function animateCircles(obesityScale, povertyScale) {
     var count = 0;
     var obAnimation = window.setInterval(function() {
         if (count == 50) {
