@@ -280,10 +280,10 @@ $("#overlay").click(function() {
 $("#sidebar__search").change(function() {
     var search = $("#sidebar__search").val();
     $("#search-results li").each(function(i, entry) {
-        if (entry.data("borough").search(search) > -1) {
-            entry.show();
+        if ($(entry).data("borough").search(search) > -1) {
+            $(entry).show();
         } else {
-            entry.hide();
+            $(entry).hide();
         }
     });
 });
