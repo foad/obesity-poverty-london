@@ -145,7 +145,7 @@ function displayData(borough) {
             strokeWeight: 0,
             fillColor: "#0000FF",
             fillOpacity: 0.35,
-            scale: obesityScale
+            scale: 0
         },
         map: map
     });
@@ -157,11 +157,38 @@ function displayData(borough) {
             strokeWeight: 0,
             fillColor: "#FF0000",
             fillOpacity: 0.35,
-            scale: povertyScale
+            scale: 0
         },
         map: map
     });
+
+    animateCircles(obesityScale, povertyScale);
 }
+
+/** animateCircles
+ * Animate the visual representations of obesity/poverty
+ */
+ function animateCircles(oScale, pScale) {
+    var count = 0;
+    var obAnimation = window.setInterval(function() {
+        if (count == 50) {
+            clearInterval(obAnimation);
+            return;
+        }
+        count++;
+        var circle = obesityCircle.icon;
+        circle.scale = (obesityScale / 50) * count
+    }, 20);
+
+    var [poAnimation = window.setInterval(function() {
+        if (count == 50) {
+            clearInterval(poAnimation);
+            return;
+        }
+        var circle = povertyCircle.icon;
+        circle.scale = (povertyScale / 50) * count
+    }, 20);
+ }
 
 /** parseOutlineData
  * Convert inputted outline data into google.maps.Polygons and apply to map
